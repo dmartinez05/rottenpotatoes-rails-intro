@@ -20,7 +20,7 @@ class MoviesController < ApplicationController
       ordering = {:order => :release_date}
       @date_header = 'hilite'
     end
-    @movies = Movie.all
+    @movies = Movie.find(:all, ordering)
   end
 
   def new
