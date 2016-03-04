@@ -19,7 +19,7 @@ class MoviesController < ApplicationController
     when 'release_date'
       ordering = 'release_date'
       @date_header = 'hilite'
-    end
+    end 
     
     if params[:sort] != session[:sort]
       session[:sort] = sort
