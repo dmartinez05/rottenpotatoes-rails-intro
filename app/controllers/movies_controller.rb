@@ -20,6 +20,12 @@ class MoviesController < ApplicationController
       ordering = {:order => :release_date}
       @date_header = 'hilite'
     end
+    
+    if params[:sort] != session[:sort]
+      session[:sort] = sort
+      redirect_to :sort => sort and return
+    end
+    
     @movies = Movie.find(:all, ordering)
   end
 
