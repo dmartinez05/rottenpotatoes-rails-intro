@@ -21,12 +21,12 @@ class MoviesController < ApplicationController
       @date_header = 'hilite'
     end
     
-  #  if params[:sort] != session[:sort]
-  #    session[:sort] = sort
-  #    redirect_to :sort => sort and return
-  #  end
+    if params[:sort] != session[:sort]
+      session[:sort] = sort
+      redirect_to :sort => sort and return
+    end
     
-    # @movies = Movie.find(:all, :order => :title)
+     @movies = Movie.find(:all, :order => :title)
   end
 
   def new
