@@ -14,10 +14,10 @@ class MoviesController < ApplicationController
     sort = params[:sort] || session[:sort]
     case sort
     when 'title'
-      ordering = {:order => :title}
+      ordering = ':title'
       @title_header = 'hilite'
     when 'release_date'
-      ordering = {:order => :release_date}
+      ordering = ':release_date'
       @date_header = 'hilite'
     end
     
@@ -27,7 +27,7 @@ class MoviesController < ApplicationController
     #end
     
     #@movies = Movie.find(:all, :order => :title)
-    @movies = Movie.all
+    @movies = Movie.order(ordering).all
   end
 
   def new
