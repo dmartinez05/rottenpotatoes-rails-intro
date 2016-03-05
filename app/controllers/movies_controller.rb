@@ -29,7 +29,8 @@ class MoviesController < ApplicationController
       redirect_to :sort => sort and return
     end
     
-    @movies = Movie.order(ordering).all
+    #@movies = Movie.order(ordering).all
+    @movies = Movie.find_all_by_rating(@selected_ratings.keys, ordering)
   end
 
   def new
