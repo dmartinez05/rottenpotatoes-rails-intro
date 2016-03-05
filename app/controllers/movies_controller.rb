@@ -23,16 +23,14 @@ class MoviesController < ApplicationController
     
     @all_ratings = Movie.all_ratings
     @selected_ratings = params[:ratings] || session[:ratings] || {}
-    
+
     if params[:sort] != session[:sort]
       session[:sort] = sort
-      redirect_to :sort => sort and return
+      redirect_to :sort => sort, :ratings => @selected_ratings and return
     end
-    
-    #@movies = Movie.order(ordering).all
-    #@movies = Movie.find_all_by_rating(@selected_ratings.keys, ordering)
-    #@movies = Movie.find(:all, ordering,@selected_ratings.keys )
-    @movies = Movie.where(@selected_ratings.values).order(ordering)
+
+    @movies = Movie.where(rating: @selected_ratings.keys).order(ordering)
+
   end
 
   def new
