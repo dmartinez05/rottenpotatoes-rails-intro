@@ -32,7 +32,7 @@ class MoviesController < ApplicationController
     #@movies = Movie.order(ordering).all
     #@movies = Movie.find_all_by_rating(@selected_ratings.keys, ordering)
     #@movies = Movie.find(:all, ordering,@selected_ratings.keys )
-    @movies = Movie.where(@selected_ratings.keys).order(ordering)
+    @movies = Movie.where(@selected_ratings.value).order(ordering)
   end
 
   def new
