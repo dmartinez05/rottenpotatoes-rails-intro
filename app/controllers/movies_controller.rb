@@ -11,6 +11,7 @@ class MoviesController < ApplicationController
   end
 
   def index
+    @all_ratings = ['G', 'PG', 'PG-13', 'NC-17', 'R']
     sort = params[:sort] || session[:sort]
     case sort
     when 'title'
@@ -20,8 +21,6 @@ class MoviesController < ApplicationController
       ordering = 'release_date'
       @date_header = 'hilite'
     end
-    
-    @all_ratings = Movie.all_ratings
     
     if params[:sort] != session[:sort]
       session[:sort] = sort
